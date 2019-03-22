@@ -1,0 +1,104 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": "http://jsonschema.net/id",
+      "required": false
+    },
+    "type": {
+      "type": "string",
+      "id": "http://jsonschema.net/type",
+      "required": false
+    },
+    "value": {
+      "type": "object",
+      "id": "http://jsonschema.net/value",
+      "required": true,
+      "properties": {
+        "data": {
+          "type": "object",
+          "id": "http://jsonschema.net/value/data",
+          "required": true,
+          "properties": {
+            "body": {
+              "type": "object",
+              "id": "http://jsonschema.net/value/data/body",
+              "required": false,
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "id": "http://jsonschema.net/value/data/body/text",
+                  "required": true
+                }
+              }
+            },
+            "channelId": {
+              "type": "string",
+              "id": "http://jsonschema.net/value/data/channelId",
+              "required": false
+            },
+            "chatOid": {
+              "type": "string",
+              "id": "http://jsonschema.net/value/data/chatOid",
+              "required": false
+            },
+            "created": {
+              "type": "number",
+              "id": "http://jsonschema.net/value/data/created",
+              "required": false
+            },
+            "fromUid": {
+              "type": "number",
+              "id": "http://jsonschema.net/value/data/fromUid",
+              "required": false
+            },
+            "id": {
+              "type": "string",
+              "id": "http://jsonschema.net/value/data/id",
+              "required": false
+            },
+            "isDeleted": {
+              "type": "boolean",
+              "id": "http://jsonschema.net/value/data/isDeleted",
+              "required": false
+            },
+            "isRead": {
+              "type": "boolean",
+              "id": "http://jsonschema.net/value/data/isRead",
+              "required": false
+            },
+            "isSpam": {
+              "type": "boolean",
+              "id": "http://jsonschema.net/value/data/isSpam",
+              "required": false
+            },
+            "spamReasons": {
+              "type": "array",
+              "id": "http://jsonschema.net/value/data/spamReasons",
+              "required": false
+            },
+            "type": {
+              "type": "string",
+              "id": "http://jsonschema.net/value/data/type",
+              "required": false
+            },
+            "uid": {
+              "type": "number",
+              "id": "http://jsonschema.net/value/data/uid",
+              "required": false
+            }
+          }
+        },
+        "type": {
+          "type": "string",
+          "id": "http://jsonschema.net/value/type",
+          "required": false
+        }
+      }
+    }
+  }
+}

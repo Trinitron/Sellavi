@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": "http://jsonschema.net/id",
+      "required": true
+    },
+    "jsonrpc": {
+      "type": "string",
+      "id": "http://jsonschema.net/jsonrpc",
+      "required": true
+    },
+    "result": {
+      "type": "object",
+      "id": "http://jsonschema.net/result",
+      "required": true,
+      "properties": {
+        "channels": {
+          "type": "array",
+          "id": "http://jsonschema.net/result/channels",
+          "required": true
+        },
+        "count": {
+          "type": "number",
+          "id": "http://jsonschema.net/result/count",
+          "required": true
+        }
+      }
+    }
+  }
+}

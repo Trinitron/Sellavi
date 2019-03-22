@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": "http://jsonschema.net/id",
+      "required": true
+    },
+    "jsonrpc": {
+      "type": "string",
+      "id": "http://jsonschema.net/jsonrpc",
+      "required": true
+    },
+    "result": {
+      "type": "object",
+      "id": "http://jsonschema.net/result",
+      "required": true,
+      "properties": {
+        "blacklist": {
+          "type": "number",
+          "id": "http://jsonschema.net/result/blacklist",
+          "required": false
+        },
+        "myChats": {
+          "type": "number",
+          "id": "http://jsonschema.net/result/myChats",
+          "required": true
+        },
+        "notMyChats": {
+          "type": "number",
+          "id": "http://jsonschema.net/result/notMyChats",
+          "required": false
+        },
+        "unreadChats": {
+          "type": "number",
+          "id": "http://jsonschema.net/result/unreadChats",
+          "required": false
+        }
+      }
+    }
+  }
+}

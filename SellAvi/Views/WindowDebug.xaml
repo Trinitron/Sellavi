@@ -1,0 +1,20 @@
+﻿<Window x:Class="SellAvi.Views.WindowDebug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:nlog="clr-namespace:NlogViewer;assembly=NlogViewer"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
+        x:Name="window"
+        Title="Отладочное окно для просмотра действий, выполняемых программой">
+
+    <!-- DataContext="{Binding Main, Source={StaticResource Locator}}" -->
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="2" Content="Отправить в тех. поддержку" IsEnabled="False" />
+            <Button Margin="2" x:Name="bntSave" Content="Сохранить в *.txt" Click="btnSave_OnClick" />
+            <Button Margin="2" x:Name="btnClose" Content="Закрыть" Click="bntClose_OnClick" />
+        </StackPanel>
+        <nlog:NlogViewer x:Name="logCtrl" />
+
+    </DockPanel>
+</Window>

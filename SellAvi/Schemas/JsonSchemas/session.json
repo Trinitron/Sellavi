@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": "http://jsonschema.net/id",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "id": "http://jsonschema.net/type",
+      "required": true
+    },
+    "value": {
+      "type": "object",
+      "id": "http://jsonschema.net/value",
+      "required": true
+    }
+  }
+}

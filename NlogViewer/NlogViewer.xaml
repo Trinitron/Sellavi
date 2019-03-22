@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="NlogViewer.NlogViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="230" d:DesignWidth="457"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <UserControl.Resources>
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding LogEntries}"
+                  x:Name="ProductsDataGrid"
+                  CanUserAddRows="False"
+                  RowDetailsVisibilityMode="VisibleWhenSelected"
+                  AlternatingRowBackground="WhiteSmoke"
+                  VerticalGridLinesBrush="Lavender"
+                  HorizontalGridLinesBrush="White"
+                  AlternationCount="2"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  AreRowDetailsFrozen="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow">
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{Binding Background}" />
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            <!--Убираем границу вокруг ячейки на которую установлен курсор-->
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                </Style>
+            </DataGrid.Resources>
+            <!--Создание необходимых колонок для отладки-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" Header="Logger" Binding="{Binding LoggerName}" />
+                <DataGridTextColumn Width="Auto" Header="Level" Binding="{Binding Level}" />
+                <DataGridTextColumn Width="*" Header="Message" Binding="{Binding FormattedMessage}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Foreground" Value="{Binding Foreground}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="10" DataContext="{Binding}" Text="{Binding ExceptionDetails}"
+                               Visibility="{Binding ContainsException}" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+        <!--<ListView ItemsSource="{Binding LogEntries}" Name="logView">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ToolTip" Value="{Binding ToolTip}" />
+                    <Setter Property="Background" Value="{Binding Background}" />
+                    <Setter Property="Foreground" Value="{Binding Foreground}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="black"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding BackgroundMouseOver}"/>
+                            <Setter Property="Foreground" Value="{Binding ForegroundMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn DisplayMemberBinding="{Binding LoggerName}" Header="Logger"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Level}" Header="Level"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding FormattedMessage}" Header="Message"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Exception}" Header="Exception"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>-->
+    </Grid>
+</UserControl>

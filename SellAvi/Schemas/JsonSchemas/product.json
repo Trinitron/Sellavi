@@ -1,0 +1,333 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "categoryId": {
+      "id": "/properties/categoryId",
+      "type": "string"
+    },
+    "coords": {
+      "id": "/properties/coords",
+      "properties": {
+        "lat": {
+          "id": "/properties/coords/properties/lat",
+          "type": "string"
+        },
+        "lng": {
+          "id": "/properties/coords/properties/lng",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "description": {
+      "id": "/properties/description",
+      "type": "string"
+    },
+    "id": {
+      "id": "/properties/id",
+      "type": "string"
+    },
+    "images": {
+      "id": "/properties/images",
+      "items": {
+        "id": "/properties/images/items",
+        "properties": {
+          "100x75": {
+            "id": "/properties/images/items/properties/100x75",
+            "type": "string"
+          },
+          "1280x960": {
+            "id": "/properties/images/items/properties/1280x960",
+            "type": "string"
+          },
+          "140x105": {
+            "id": "/properties/images/items/properties/140x105",
+            "type": "string"
+          },
+          "240x180": {
+            "id": "/properties/images/items/properties/240x180",
+            "type": "string"
+          },
+          "432x324": {
+            "id": "/properties/images/items/properties/432x324",
+            "type": "string"
+          },
+          "640x480": {
+            "id": "/properties/images/items/properties/640x480",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "locationId": {
+      "id": "/properties/locationId",
+      "type": "string"
+    },
+    "manager": {
+      "id": "/properties/manager",
+      "type": "string"
+    },
+    "metroId": {
+      "id": "/properties/metroId",
+      "type": "string"
+    },
+    "metroType": {
+      "id": "/properties/metroType",
+      "type": "string"
+    },
+    "parameters": {
+      "id": "/properties/parameters",
+      "properties": {
+        "flat": {
+          "id": "/properties/parameters/properties/flat",
+          "items": {
+            "id": "/properties/parameters/properties/flat/items",
+            "properties": {
+              "description": {
+                "id": "/properties/parameters/properties/flat/items/properties/description",
+                "type": "string"
+              },
+              "title": {
+                "id": "/properties/parameters/properties/flat/items/properties/title",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "groups": {
+          "id": "/properties/parameters/properties/groups",
+          "items": {
+            "id": "/properties/parameters/properties/groups/items",
+            "properties": {
+              "title": {
+                "id": "/properties/parameters/properties/groups/items/properties/title",
+                "type": "string"
+              },
+              "values": {
+                "id": "/properties/parameters/properties/groups/items/properties/values",
+                "items": {
+                  "id": "/properties/parameters/properties/groups/items/properties/values/items",
+                  "properties": {
+                    "description": {
+                      "id":
+                        "/properties/parameters/properties/groups/items/properties/values/items/properties/description",
+                      "type": "string"
+                    },
+                    "subtitles": {
+                      "id":
+                        "/properties/parameters/properties/groups/items/properties/values/items/properties/subtitles",
+                      "items": {
+                        "id":
+                          "/properties/parameters/properties/groups/items/properties/values/items/properties/subtitles/items",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "id": "/properties/parameters/properties/groups/items/properties/values/items/properties/title",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "params": {
+      "id": "/properties/params",
+      "properties": {
+        "description": {
+          "id": "/properties/params/properties/description",
+          "type": "string"
+        },
+        "map": {
+          "id": "/properties/params/properties/map",
+          "items": {
+            "id": "/properties/params/properties/map/items",
+            "properties": {
+              "id": {
+                "id": "/properties/params/properties/map/items/properties/id",
+                "type": "string"
+              },
+              "type": {
+                "id": "/properties/params/properties/map/items/properties/type",
+                "type": "string"
+              },
+              "value": {
+                "id": "/properties/params/properties/map/items/properties/value",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "phone": {
+      "id": "/properties/phone",
+      "type": "string"
+    },
+    "phoneOnly": {
+      "id": "/properties/phoneOnly",
+      "type": "boolean"
+    },
+    "price": {
+      "id": "/properties/price",
+      "properties": {
+        "metric": {
+          "id": "/properties/price/properties/metric",
+          "type": "string"
+        },
+        "title": {
+          "id": "/properties/price/properties/title",
+          "type": "string"
+        },
+        "value": {
+          "id": "/properties/price/properties/value",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "refs": {
+      "id": "/properties/refs",
+      "properties": {
+        "categories": {
+          "id": "/properties/refs/properties/categories",
+          "properties": {
+            "110": {
+              "id": "/properties/refs/properties/categories/properties/110",
+              "properties": {
+                "name": {
+                  "id": "/properties/refs/properties/categories/properties/110/properties/name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "112": {
+              "id": "/properties/refs/properties/categories/properties/112",
+              "properties": {
+                "name": {
+                  "id": "/properties/refs/properties/categories/properties/112/properties/name",
+                  "type": "string"
+                },
+                "parentId": {
+                  "id": "/properties/refs/properties/categories/properties/112/properties/parentId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "locations": {
+          "id": "/properties/refs/properties/locations",
+          "properties": {
+            "653240": {
+              "id": "/properties/refs/properties/locations/properties/653240",
+              "properties": {
+                "name": {
+                  "id": "/properties/refs/properties/locations/properties/653240/properties/name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "metro": {
+          "id": "/properties/refs/properties/metro",
+          "properties": {
+            "171": {
+              "id": "/properties/refs/properties/metro/properties/171",
+              "properties": {
+                "name": {
+                  "id": "/properties/refs/properties/metro/properties/171/properties/name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "seller": {
+      "id": "/properties/seller",
+      "properties": {
+        "name": {
+          "id": "/properties/seller/properties/name",
+          "type": "string"
+        },
+        "title": {
+          "id": "/properties/seller/properties/title",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "sharing": {
+      "id": "/properties/sharing",
+      "properties": {
+        "url": {
+          "id": "/properties/sharing/properties/url",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "stats": {
+      "id": "/properties/stats",
+      "properties": {
+        "views": {
+          "id": "/properties/stats/properties/views",
+          "properties": {
+            "today": {
+              "id": "/properties/stats/properties/views/properties/today",
+              "type": "string"
+            },
+            "total": {
+              "id": "/properties/stats/properties/views/properties/total",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "time": {
+      "id": "/properties/time",
+      "type": "string"
+    },
+    "title": {
+      "id": "/properties/title",
+      "type": "string"
+    },
+    "userType": {
+      "id": "/properties/userType",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

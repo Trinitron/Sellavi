@@ -1,0 +1,14 @@
+﻿<Window x:Class="SellAvi.Views.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SplashScreen" Height="60" Width="220" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True">
+    <Grid Background="WhiteSmoke">
+        <ProgressBar x:Name="ProgressBar1" HorizontalAlignment="Left" Height="10" Margin="10,38,0,0"
+                     VerticalAlignment="Top" Width="200" Foreground="#FF20F764" />
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap"
+                   Text="Первичная загрузка и настройка..." VerticalAlignment="Top" Width="200" FontSize="12"
+                   TextAlignment="Center" />
+
+    </Grid>
+</Window>

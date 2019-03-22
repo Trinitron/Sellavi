@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="SellAvi.Views.ControlAuthenticate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:classes="clr-namespace:SellAvi.Classes"
+             xmlns:converters="clr-namespace:SellAvi.Views.Converters"
+             mc:Ignorable="d"
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+
+    <!--d:DesignHeight="300" d:DesignWidth="300"-->
+    <Grid Margin="10,0,10,10" Width="160">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18" />
+            <RowDefinition Height="18" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="42" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="18" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0">Логин</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Padding="-2,0,5,0"
+                 Text="{Binding CurrentDetachedUser.UserName,UpdateSourceTrigger=PropertyChanged}">
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <command:EventToCommand Command="{Binding CredentialsChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </TextBox>
+        <Button Grid.Row="0" Grid.Column="2" Background="WhiteSmoke" ToolTip="Выбор пользователя">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                            <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True" />
+                                        </BooleanAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu DataContext="{Binding Main, Source={StaticResource Locator}}"
+                                         ItemsSource="{Binding AvitoUsers}" DisplayMemberPath="CompanyName"
+                                         Visibility="Visible">
+                                <ContextMenu.ItemContainerStyle>
+                                    <Style TargetType="MenuItem">
+                                        <Setter Property="Command"
+                                                Value="{Binding Main.LogInAsUserCommand, Source={StaticResource Locator}}" />
+                                        <Setter Property="CommandParameter" Value="{Binding}" />
+                                    </Style>
+                                </ContextMenu.ItemContainerStyle>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+            <Image Source="/SellAvi;component/Resources/user.png" />
+        </Button>
+        <TextBlock Grid.Row="1" Grid.Column="0">Пароль</TextBlock>
+        <!--<TextBox Grid.Row="1" Padding="-2,0,5,0" Grid.Column="1" Text="{Binding CurrentUser.UserPassword,UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <command:EventToCommand Command="{Binding CredentialsChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>-->
+        <PasswordBox Name="PasswordBox" Grid.Row="1" Padding="-2,0,5,0" Grid.Column="1"
+                     classes:PasswordBoxAssistant.BindPassword="true"
+                     classes:PasswordBoxAssistant.BoundPassword="{Binding CurrentDetachedUser.UserPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="10">
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="PasswordChanged">
+                    <command:EventToCommand Command="{Binding CredentialsChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+            <PasswordBox.InputBindings>
+                <KeyBinding Key="Return" Command="{Binding AuthenticateCommand}" />
+            </PasswordBox.InputBindings>
+        </PasswordBox>
+
+        <Button Grid.Row="1" Grid.Column="2" Background="WhiteSmoke" Command="{Binding AuthenticateCommand}"
+                ToolTip="Авторизоваться на сайте">
+            <Image Source="/SellAvi;component/Resources/forward.png" />
+        </Button>
+    </Grid>
+</UserControl>

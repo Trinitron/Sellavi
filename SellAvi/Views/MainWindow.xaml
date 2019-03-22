@@ -1,0 +1,128 @@
+﻿<Window x:Class="SellAvi.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:SellAvi.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
+        mc:Ignorable="d"
+        Title="SELLAVI - Тестовое задание 100$" Height="650" Width="340"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        Icon="/SellAvi;component/Resources/sellavi.png">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <command:EventToCommand Command="{Binding WindowClosing}" PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/MainExpanderResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <!--http://stackoverflow.com/questions/80388/wpf-data-triggers-and-story-boards-->
+            <Style x:Key="ImageBlinking" TargetType="{x:Type Image}">
+                <Setter Property="Opacity" Value="1" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding CurrentIp}" Value="подключение...">
+                        <Setter Property="Opacity" Value="1" />
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard x:Name="beginAnimation">
+                                <Storyboard>
+                                    <DoubleAnimation BeginTime="0:0:4" Duration="0:0:0.5"
+                                                     Storyboard.TargetProperty="(Image.Opacity)" From="1.0" To="0.0"
+                                                     RepeatBehavior="Forever" AutoReverse="True" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <StopStoryboard
+                                BeginStoryboardName="beginAnimation" />
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!--<Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" CanExecute="BrowseBack_CanExecute" Executed="BrowseBack_Executed" />
+        <CommandBinding Command="NavigationCommands.BrowseForward" CanExecute="BrowseForward_CanExecute" Executed="BrowseForward_Executed" />
+        <CommandBinding Command="NavigationCommands.GoToPage" CanExecute="GoToPage_CanExecute" Executed="GoToPage_Executed" />
+    </Window.CommandBindings>-->
+    <DockPanel>
+        <Menu IsMainMenu="True" Height="22" VerticalAlignment="Top" DockPanel.Dock="Top" Background="#f5f5f5"
+              BorderThickness="0,0,0,2" BorderBrush="#dddddd">
+            <MenuItem Header="Пользователи">
+                <MenuItem Header="Добавить нового пользователя" Command="{Binding CallProfileRegisterCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/add.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Управление пользователями" Command="{Binding CallUserListCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/womanman.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Страница профиля Avito" Command="{Binding CallProfileNavigateCommand}" />
+            </MenuItem>
+            <MenuItem Header="Товары">
+                <MenuItem Header="Создать новый товар" Command="{Binding CallAddNewProductCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/document.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Импортировать товары" Command="{Binding CallImportProductCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/download.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Редактор товара" Command="{Binding CallAddProductCommand}" />
+                <MenuItem Header="Папка загруженных фото" Command="{Binding CallViewPhotosCommand}" />
+                <MenuItem Header="Каталог товаров" Command="{Binding CallViewProductsCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/addressbook.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Настройки">
+                <MenuItem Header="Настройки программы" Command="{Binding CallAppSettingsCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/tools.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Журнал обучения" Command="{Binding CallCustomParamsCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/calendar.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Настройки мониторинга">
+                    <MenuItem.Icon>
+                        <Image Source="/SellAvi;component/Resources/tv.png" />
+                    </MenuItem.Icon>
+                    <MenuItem IsCheckable="True" Header="Включить браузер" IsChecked="{Binding BrowserTrackChanges}" />
+                    <MenuItem Header="Инструменты разработчика" Command="{Binding CallBrowserDevToolsCommand}" />
+                    <MenuItem Header="Обновить страницу" Command="{Binding CallReloadBrowserCommand}" />
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+
+        <Border DockPanel.Dock="Bottom" Background="#f5f5f5" CornerRadius="4" BorderBrush="#dddddd"
+                BorderThickness="0,0,0,0">
+            <views:ControlProductUploader />
+        </Border>
+
+        <Border DockPanel.Dock="Left" Background="#f5f5f5" BorderBrush="#dddddd" BorderThickness="0,0,2,0"
+                Visibility="{Binding MenuVisibility}">
+            <StackPanel DockPanel.Dock="Left">
+                <Expander Header="Авторизация" Style="{StaticResource MainViewExpander}" IsExpanded="True">
+                    <views:ControlAuthenticate />
+                </Expander>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Window>
